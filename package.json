@@ -1,0 +1,22 @@
+{
+  "name": "changeset2geojson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "getchangeset": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird-queue": "0.0.8",
+    "minimist": "^1.2.0",
+    "real-changesets-parser": "^1.2.3",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "xhr": "^2.4.1"
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>Display a satellite map</title>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+        #uploadForm{ position:absolute; top:0; bottom:0; width:auto; height: 100px; z-index: 999; background: #098;        }
+        #drag{ position:  absolute; z-index: 99999999;  top: 200px; left:500px; background: transparent; color:#ffffff; padding: 15px;}
+        .draggable { width: 100%; height: 100%; padding: 0.5em; float: left; margin: 0 10px 10px 0; }
+        .ui-widget-content{height: 1200px;}
+        #containment-wrapper, #containment-wrapperd{ width: 100%; height:100%; border:2px solid #ccc; padding: 10px; }
+        #date {color: #fffff; font-style: 40px; padding-bottom: 5px;}
+        </style>
+    </head>
+    <body>
+        <form method="post" id="uploadForm"  enctype="multipart/form-data">
+            <table class="span10">
+                <tr>
+                    <td colspan="3">
+                        <legend>Select the files(geojson)</legend>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="file" name="files[]" multiple="multiple" onchange="getFileSizeandName(this);"/>
+                    </td>
+                </tr>
+                <tr>
+                    <divid="totalsize"></div>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <a class="ui-button ui-widget ui-corner-all" href="#" class ="start"> Start </a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div id='map'></div>
+        <div id="containment-wrapper">
+            <div class="draggable ui-widget-content">
+                <div id="drag" class="ui-widget-header">
+                    <div > Date: <span id="date"></span></div>
+                    <div style="color: #ffd800;"> Changeset: <span id="changeset"></span></div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="/app.js">
+        </script>
+    </body>
+</html>
