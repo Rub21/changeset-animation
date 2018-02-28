@@ -23,5 +23,6 @@ getchangeset  --url="https://osmcha.mapbox.com/api/v1/changesets/?page=1&page_si
 ```
 ### Display the animation
 
-open the url: https://rub21.github.io/changeset-animation, load all your file and press start.
+Open the url: https://rub21.github.io/changeset-animation, select all your files and press start.
 
+![ddd](https://user-images.githubusercontent.com/1152236/36818363-c0680636-1cb2-11e8-9321-a6da954925f8.gif)
