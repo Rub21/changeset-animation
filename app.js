@@ -1,16 +1,22 @@
-var arr = []
+var files = [];
 
 function getFileSizeandName(input) {
   var select = $('#uploadTable');
+  var arr = []
   for (var i = 0; i < input.files.length; i++) {
-    console.log(input.files[i].name)
+    // console.log(input.files[i].name)
     arr.push(input.files[i])
   }
-  arr = arr.sort(function(a, b) {
-    return parseInt(a.name.split('.')[0]) > parseInt(b.name.split('.')[0]);
+
+  files = arr.sort(function(a, b) {
+    return (parseInt(a.name.split('.')[0]) - parseInt(b.name.split('.')[0]));
   });
   // arr.reverse();
+  for (var i = 0; i < files.length; i++) {
+    console.log(files[i].name)
+  }
 }
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicnViZW4iLCJhIjoiYlBrdkpRWSJ9.JgDDxJkvDn3us36aGzR6vg';
 var map = new mapboxgl.Map({
@@ -50,8 +56,7 @@ function mapline(num, id, geojson) {
 
 function print(i) {
   var input, file, fr;
-  arr[i]
-  file = arr[i];
+  file = files[i];
   fr = new FileReader();
   fr.onload = receivedText;
   fr.readAsText(file);
@@ -61,10 +66,13 @@ function print(i) {
     var newArr = JSON.parse(lines);
     mapline(i, file.name, newArr)
   }
+  // fr.onloadend = function(evt) {
+  //   if (evt.target.readyState == FileReader.DONE) {
   i++;
-  if (i < arr.length) {
+  if (i < files.length) {
     print(i)
   }
+  // }
 }
 
 $(function() {
