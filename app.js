@@ -23,7 +23,7 @@ var map = new mapboxgl.Map({
   container: 'map',
   zoom: 4,
   center: [0, 0],
-  style: 'mapbox://styles/ruben/cje7glisrhb1q2rp7dosrnhri',
+  style: 'mapbox://styles/mapbox/basic-v9',
   hash: false
 });
 
@@ -79,4 +79,18 @@ $(function() {
   $("#drag").draggable({
     containment: "parent"
   });
+  $('.ui-widget-content').height($(window).height());
 });
+
+
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+  var layerId = layer.target.id;
+  map.setStyle('mapbox://styles/' + layerId);
+}
+
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].onclick = switchLayer;
+}
